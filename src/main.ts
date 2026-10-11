@@ -11,6 +11,16 @@ async function bootstrap() {
     .setTitle('My First Project API')
     .setDescription('Documentación de la API - Diseño de sistemas en Internet')
     .setVersion('1.0')
+    .addTag('api')
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+      in: 'header',
+      name: 'Authorization',
+      description: 'Enter your bearer token',
+    })
+    .addSecurityRequirements('bearer')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
